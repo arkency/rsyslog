@@ -17,9 +17,9 @@ $PreserveFQDN <%= node['rsyslog']['preserve_fqdn'] %>
 #### MODULES ####
 #################
 
-$ModLoad imuxsock # provides support for local system logging
-$ModLoad imklog   # provides kernel logging support (previously done by rklogd)
-#$ModLoad immark  # provides --MARK-- message capability
+<%= '#' unless node['rsyslog']['modules']['uxsock'] %>$ModLoad imuxsock # provides support for local system logging
+<%= '#' unless node['rsyslog']['modules']['klog'] %>$ModLoad imklog   # provides kernel logging support (previously done by rklogd)
+<%= '#' unless node['rsyslog']['modules']['mark'] %>$ModLoad immark  # provides --MARK-- message capability
 
 <% if node['rsyslog']['server'] -%>
 # Provide <%= @protocol.upcase %> log reception

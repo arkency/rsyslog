@@ -45,3 +45,7 @@ when "ubuntu"
 when "arch"
   default["rsyslog"]["service_name"] = "rsyslogd"
 end
+
+default["rsyslog"]["modules"]["uxsock"] = true
+default["rsyslog"]["modules"]["klog"]   = true
+default["rsyslog"]["modules"]["mark"]   = false
